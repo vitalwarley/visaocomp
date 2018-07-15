@@ -9,7 +9,7 @@ Created on Tue Jun 19 20:14:41 2018
 import cv2
 cv2.__version__
 
-img = cv2.imread('/home/lativ/Documents/UFAL/repos/visao/img/Lenna.png',
+img = cv2.imread('/home/lativ/Documents/UFAL/repos/visaocomp/img/Lenna.png',
                  cv2.IMREAD_COLOR)
 cv2.namedWindow('img', cv2.WINDOW_KEEPRATIO)
 cv2.imshow('img', img)
