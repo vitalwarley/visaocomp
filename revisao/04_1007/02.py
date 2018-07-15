@@ -17,30 +17,37 @@ face_cascade = cv.CascadeClassifier(folder_cascades_xml + 'haarcascade_frontalfa
 eye_cascade = cv.CascadeClassifier(folder_cascades_xml + 'haarcascade_eye.xml')
 smile_cascade = cv.CascadeClassifier(folder_cascades_xml + 'haarcascade_smile.xml')
 
-img = cv.imread(folder_imgs + 'jl2.jpg')
-gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+#img = cv.imread(folder_imgs + 'jl2.jpg')
+#gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
-faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+# TO CAP IN REAL TIME
+cap = cv.VideoCapture(0)
 
-for (x, y, w, h) in faces:
-    cv.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
-    roi_gray_sup = gray[y:y + (h//2), x:x+w]
-    roi_gray_inf = gray[y + (h//2):y+h, x:x+w]
-    roi_color = img[y:y+h, x:x+w]
+while cv.waitKey(1) != ord('q'):
+    _, img = cap.read()
+    gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+    # As before...
+    faces = face_cascade.detectMultiScale(gray, 1.3, 5)
 
-    eyes = eye_cascade.detectMultiScale(roi_gray_sup, 1.1, 3)
-    smile = smile_cascade.detectMultiScale(roi_gray_inf, 1.1, 3)
+    for (x, y, w, h) in faces:
+        cv.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
+        roi_gray_sup = gray[y:y + (h//2), x:x+w]
+        roi_gray_inf = gray[y + (h//2):y+h, x:x+w]
+        roi_color = img[y:y+h, x:x+w]
 
-    for (ex, ey, ew, eh) in eyes:
-        cv.rectangle(roi_color, (ex, ey), (ex+ew, ey+eh), (0, 255, 0), 2)
+        eyes = eye_cascade.detectMultiScale(roi_gray_sup, 1.1, 3)
+        smile = smile_cascade.detectMultiScale(roi_gray_inf, 1.1, 3)
 
-    for (sx, sy, sw, sh) in smile:
-        cv.rectangle(roi_color, (sx, h//2 + sy), (sx + sw, h//2 + sy + sh), (0, 0, 255), 2)
+        for (ex, ey, ew, eh) in eyes:
+            cv.rectangle(roi_color, (ex, ey), (ex+ew, ey+eh), (0, 255, 0), 2)
 
-cv.imshow('img', img)
+        for (sx, sy, sw, sh) in smile:
+            cv.rectangle(roi_color, (sx, h//2 + sy), (sx + sw, h//2 + sy + sh), (0, 0, 255), 2)
 
-while True:
-    if 0xFF & cv.waitKey(1) == ord('q'):
-        break
+    cv.imshow('frame', img)
+
+#while True:
+#    if 0xFF & cv.waitKey(1) == ord('q'):
+#        break
+cap.release()
 cv.destroyAllWindows()
-
