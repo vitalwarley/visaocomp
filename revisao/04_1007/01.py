@@ -9,8 +9,9 @@ FROM: https://docs.opencv.org/3.4/d7/d8b/tutorial_py_face_detection.html
 import numpy as np
 import cv2 as cv
 
+# Folder's path
 folder_imgs = "/home/lativ/Documents/UFAL/repos/visaocomp/img/"
-folder_cascades_xml = '/usr/local/opencv/src/opencv-3.4.1/data/haarcascades/'
+folder_cascades_xml = '/usr/share/opencv/haarcascades/'
 
 face_cascade = cv.CascadeClassifier(folder_cascades_xml + 'haarcascade_frontalface_default.xml')
 eye_cascade = cv.CascadeClassifier(folder_cascades_xml + 'haarcascade_eye.xml')
