@@ -16,7 +16,7 @@ folder_cascades_xml = '/usr/share/opencv/haarcascades/'
 face_cascade = cv.CascadeClassifier(folder_cascades_xml + 'haarcascade_frontalface_default.xml')
 eye_cascade = cv.CascadeClassifier(folder_cascades_xml + 'haarcascade_eye.xml')
 
-img = cv.imread(folder_imgs + 'hl1.jpg')
+img = cv.imread(folder_imgs + 'jl1.jpg')
 gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
 faces = face_cascade.detectMultiScale(gray, 1.3, 5)
