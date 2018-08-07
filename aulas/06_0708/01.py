@@ -16,7 +16,8 @@ import cv2
 import numpy as np
 
 # %% Basic variables
-folder = '/data/Documents/UFAL/repos/visaocomp/img/'
+
+folder = 'symmetric_circular_grid/'
 
 img = cv2.imread(folder + 'Lenna.png')
 
@@ -171,6 +172,3 @@ else:
 
     print("Not enough matches are found - {}/{}".format(len(good), MIN_MATCH_COUNT))
     matchesMask = None
-
-
-

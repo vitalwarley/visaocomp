@@ -24,9 +24,7 @@ def wait_or_press_q():
 
 # %% Main variables
 
-folder = ('/data/Documents/UFAL/repos/' +
-          'material_repos/camera_calibration_API/examples/' +
-          'example_images/symmetric_grid/')
+folder = 'symmetric_circular_grid/'
 
 criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001)
 
@@ -66,7 +64,7 @@ ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.sh
 
 # %% Undistortion
 
-img = cv2.imread(folder + 'Image__2018-02-14__10-13-57.png')
+img = cv2.imread(folder + '25.png')
 h, w = img.shape[:2]
 newcameramtx, roi = cv2.getOptimalNewCameraMatrix(mtx, dist, (w, h), 1, (w, h))
 

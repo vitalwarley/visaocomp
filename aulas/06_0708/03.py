@@ -53,10 +53,7 @@ objp[:,:2] = np.mgrid[0:6,0:5].T.reshape(-1,2)
 axis = np.float32([[3, 0, 0], [0, 3, 0], [0, 0, -3]]).reshape(-1, 3)
 
 # %% Load, search, refine (if found), draw
-folder = ('/data/Documents/UFAL/repos/' +
-          'material_repos/camera_calibration_API/examples/' +
-          'example_images/symmetric_grid/')
-
+folder = 'symmetric_circular_grid/'
 images = glob.glob(folder + '*.png')
 
 for fname in images:
@@ -85,9 +82,7 @@ wait_or_press_q()
 
 # FIXME: couldn't draw cube because of erros in tutorial and lack of time to fix
 
-folder = ('/data/Documents/UFAL/repos/' +
-          'material_repos/camera_calibration_API/examples/' +
-          'example_images/symmetric_grid/')
+folder = 'symmetric_circular_grid/'
 
 images = glob.glob(folder + '*.png')
 
@@ -114,5 +109,3 @@ for fname in images:
 
 # Showing only the last one
 wait_or_press_q()
-
-
