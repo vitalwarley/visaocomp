@@ -99,5 +99,4 @@ wait_or_press_q()
 
 #%% Save data
 
-folder = '/data/Documents/UFAL/repos/visaocomp/aulas/06_0708/'
-np.savez(folder + '02_data', mtx=mtx, dist=dist, rvecs=rvecs, tvecs=tvecs)
+np.savez('02_data', mtx=mtx, dist=dist, rvecs=rvecs, tvecs=tvecs)

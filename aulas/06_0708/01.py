@@ -17,9 +17,7 @@ import numpy as np
 
 # %% Basic variables
 
-folder = 'symmetric_circular_grid/'
-
-img = cv2.imread(folder + 'Lenna.png')
+img = cv2.imread('Lenna.png')
 
 # %% Basic utils
 def wait_or_press_q():
@@ -111,8 +109,8 @@ import matplotlib.pyplot as plt
 
 MIN_MATCH_COUNT = 10
 
-#img1 = cv2.imread('./visaocomp/aulas/06_0708/bottle.jpg', 0)           # queryImage
-#img2 = cv2.imread('./visaocomp/aulas/06_0708/bottle_in_scene.jpg', 0)  # trainImage
+img1 = cv2.imread('bottle.jpg', 0)           # queryImage
+img2 = cv2.imread('bottle_in_scene.jpg', 0)  # trainImage
 
 # Get it right: rotate and reescale
 rows, cols = img2.shape[:2]
