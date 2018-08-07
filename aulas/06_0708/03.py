@@ -31,14 +31,13 @@ def draw(img, corners, imgpts):
     img = cv2.line(img, corner, tuple(imgpts[2].ravel()), (0, 0, 255), 5)
     return img
 
-# FIXME: cv2.line w error
 def draw_cube(img, corners, imgpts):
     imgpts = np.int32(imgpts).reshape(-1, 2)
 
     img = cv2.drawContours(img, [imgpts[:4]], -1, (0, 255, 0), -3)
 
     for i, j in zip(range(4), range(4, 8)):
-        img = cv2.line(img, tuple(imgpts[i]), tuple(imgpts[j].ravel()), (255, 0, 0), 3)
+        img = cv2.line(img, tuple(imgpts[i]), tuple(imgpts[j]), (255, 0, 0), 3)
 
     img = cv2.drawContours(img, [imgpts[4::]], -1, (0, 0, 255), 3)
 
@@ -91,6 +90,9 @@ folder = ('/data/Documents/UFAL/repos/' +
           'example_images/symmetric_grid/')
 
 images = glob.glob(folder + '*.png')
+
+axis = np.float32([[0, 0, 0], [0, 3, 0], [3, 3, 0], [3, 0, 0],
+                   [0, 0, -3], [0, 3, -3], [3, 3, -3], [3, 0, -3]]).reshape(-1, 3)
 
 for fname in images:
     img = cv2.imread(fname)
