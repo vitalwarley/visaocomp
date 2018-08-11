@@ -33,7 +33,7 @@ with np.load(folder + '02_data.npz') as X:
 size = 200
 # markerImage = np.zeros((size, size), np.uint8)
 dictionary = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_6X6_250)
-markerId = 23
+markerId = 10
 bborderWidth = 1
 
 # %% Main marker creation
@@ -49,14 +49,16 @@ wait_a_little()
 
 markerIds, markerCorners, rejectedCandidates = None, None, None
 
-parameters = cv2.aruco.DetectorParameters_create()
+# parameters = cv2.aruco.DetectorParameters_create()
 
 inputImage = cv2.imread('marker.png')
-cv2.aruco.detectMarkers(inputImage, dictionary, markerCorners, markerIds, parameters, rejectedCandidates)
+_, _, markerCorners = cv2.aruco.detectMarkers(inputImage, dictionary, markerCorners, markerIds)
+# cv2.aruco.detectMarkers(inputImage, dictionary, markerCorners, markerIds, parameters, rejectedCandidates)
 # cv2.aruco.estimatePoseSingleMarkers(markerCorners, bborderWidth, mtx, dist, rvecs, tvecs)
 
 # %% Draw detected markers
 
+# cv2.aruco.drawDetectedMarkers(inputImage, markerCorners, markerIds)
 cv2.aruco.drawDetectedMarkers(inputImage, markerCorners, markerIds)
 
 # %% Show detected markers
