@@ -52,8 +52,7 @@ markerIds, markerCorners, rejectedCandidates = None, None, None
 # parameters = cv2.aruco.DetectorParameters_create()
 
 inputImage = cv2.imread('marker.png')
-_, _, markerCorners = cv2.aruco.detectMarkers(inputImage, dictionary, markerCorners, markerIds)
-# cv2.aruco.detectMarkers(inputImage, dictionary, markerCorners, markerIds, parameters, rejectedCandidates)
+_, _, markerCorners = cv2.aruco.detectMarkers(inputImage, dictionary)
 # cv2.aruco.estimatePoseSingleMarkers(markerCorners, bborderWidth, mtx, dist, rvecs, tvecs)
 
 # %% Draw detected markers
